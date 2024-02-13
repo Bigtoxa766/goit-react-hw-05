@@ -19,9 +19,9 @@ export const fachApiById = async (movieID) => {
   return(response.data)
 };
 
-export const fachApiBySearch = async (searchQuery, page) => {
+export const fachApiBySearch = async (searchQuery) => {
 
-  const response = await axios.get(`/search/movie?query=${searchQuery}&include_adult=false&language=en-US&page=${page}`, options)
+  const response = await axios.get(`/search/movie?query=${searchQuery}&include_adult=false&language=en-US&page=1`, options)
   return(response.data)
 };
 

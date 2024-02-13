@@ -1,6 +1,6 @@
 import toast from 'react-hot-toast';
 
-export const SearchForm = ({onSearch, value, onChange}) => {
+export const SearchForm = ({onSearch, value}) => {
 
   const handleSubmit = e => {
     e.preventDefault();
@@ -16,7 +16,7 @@ export const SearchForm = ({onSearch, value, onChange}) => {
   return (
     <form
       onSubmit={handleSubmit}>
-      <input value={value} onChange={e => onChange(e.target.value)} type="text" name="searchQuery" />
+      <input defaultValue={value} type="text" name="searchQuery" />
       <button type="submit">Search</button>
     </form>
   )

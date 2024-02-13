@@ -7,7 +7,7 @@ export default function MovieDetailsPage() {
   const {movieID} = useParams();
   const [movie, setMovie] = useState([]);
   const location = useLocation(null);
-  // const backLink = useRef(location.state)
+  const backLink = useRef(location.state)
 
   useEffect(() => {
     async function fetchedMovieId() {
@@ -27,7 +27,7 @@ export default function MovieDetailsPage() {
   return (
     <div>
       <div>
-        <Link to={location.state ??  '/movie'}>Go back</Link>
+        <Link to={backLink.current ??  '/movie'}>Go back</Link>
       {movie &&  
       <MovieDitails 
       original_title={original_title}

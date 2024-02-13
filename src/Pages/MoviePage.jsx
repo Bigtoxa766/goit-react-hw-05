@@ -1,11 +1,10 @@
 
-import { Link } from "react-router-dom"
 import { CirclesWithBar } from "react-loader-spinner";
 import { useEffect, useState } from "react"
 import { fachApiBySearch } from "../api"
 import { SearchForm } from "../components/SearchForm"
-
-
+import { MovieList } from "../components/MovieList";
+import { ErrorMessage } from "../components/ErrorMessage";
 
 export default function MoviePage() {
   const [movies, setMovies] = useState([]);
@@ -62,16 +61,8 @@ export default function MoviePage() {
   wrapperClass=""
   visible={true}
       />}
-      {error && <b>OOPS! Something went wrong. Try to reload the page...</b>}
-      <ul>
-      { (
-        movies.map(movie => (
-          <li key={movie.id}>
-              <Link to={`/movie/${movie.id}`}><p>{ movie.title}</p></Link>
-            </li>
-        ))
-      )}
-      </ul>
+      {error && <ErrorMessage/>}
+      <MovieList data={movies}/>
       {movies.length > 0 && <button onClick={handleLoadMore}>Load more</button>}
     </div>
   )

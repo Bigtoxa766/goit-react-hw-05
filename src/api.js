@@ -24,3 +24,8 @@ export const fachApiBySearch = async (searchQuery, page) => {
   const response = await axios.get(`/search/movie?query=${searchQuery}&include_adult=false&language=en-US&page=${page}`, options)
   return(response.data)
 };
+
+export const fetchApiCast = async (movieID) => {
+  const response = await axios.get(`/movie/${movieID}/credits`, options)
+  return (response.data)
+}

@@ -7,6 +7,7 @@ import MoviePage from './Pages/MoviePage'
 import { NavBar } from './components/NavBar'
 import NotFoundPage from './Pages/NotFoundPage'
 import MovieDetailsPage from './Pages/MovieDetailsPage'
+import { MovieCast } from './components/MovieCast';
 
 function App() {
 
@@ -19,7 +20,10 @@ function App() {
       <Routes>
         <Route path='/' element={<HomePage />} />
         <Route path='/movie' element={<MoviePage />} />
-        <Route path='/movie/:movieID' element={ <MovieDetailsPage/>} />
+        <Route path='/movie/:movieID' element={<MovieDetailsPage />}>
+          <Route path='cast' element={<MovieCast/>} />
+          <Route path='reviews' element={<div>reviews</div>} />
+        </Route>
         <Route path='*' element={<NotFoundPage/>} />
       </Routes>
     </div>

@@ -1,7 +1,7 @@
 
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
 import { fachApi } from "../api";
+import { MovieList } from "../components/MovieList";
 
 export default function HomePage() {
   const [movies, setMovies] = useState([])
@@ -21,15 +21,7 @@ export default function HomePage() {
   return (
     <div>
       <h1>Trending today</h1>
-      {movies.length > 0 && (
-        <ul>
-          {movies.map(movie => (
-            <li key={movie.id}>
-              <Link to={`/movie/${movie.id}`}><p>{ movie.title}</p></Link>
-            </li>
-          ))}
-        </ul>
-     )}
+      {movies.length > 0 && (<MovieList data={movies}/>)}
     </div>
   )
 }

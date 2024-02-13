@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Link, NavLink, Outlet, useLocation, useParams } from "react-router-dom";
 import { fachApiById } from "../api";
 import { MovieDitails } from "../components/MovieDitails";
@@ -6,7 +6,8 @@ import { MovieDitails } from "../components/MovieDitails";
 export default function MovieDetailsPage() {
   const {movieID} = useParams();
   const [movie, setMovie] = useState([]);
-  const location = useLocation(null)
+  const location = useLocation(null);
+  // const backLink = useRef(location.state)
 
   useEffect(() => {
     async function fetchedMovieId() {

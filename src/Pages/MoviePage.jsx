@@ -9,7 +9,7 @@ import { useSearchParams } from "react-router-dom";
 
 export default function MoviePage() {
   const [movies, setMovies] = useState([]);
-  const [query, setQuery] = useState('')
+  const [setQuery] = useState('')
   const [loading, setloading] = useState(false);
   const [error, setError] = useState(false);
   const [page, setPage] = useState(1)
@@ -18,6 +18,7 @@ export default function MoviePage() {
   const search = params.get('search') ?? '';
 
   const changeSearch = newSearch => {
+    
     params.set('search', newSearch);
     setParams(params)
   }
@@ -34,13 +35,13 @@ export default function MoviePage() {
   }
 
   useEffect(() => {
-    if (query === '') {
+    if (search  === '') {
       return
     }
       
     async function fetchMovie() {
       try {
-        const searchByQuery = await fachApiBySearch(query, page);
+        const searchByQuery = await fachApiBySearch(search , page);
         setMovies(prevMovie => {
           return [...prevMovie, ...searchByQuery.results]
         })
@@ -52,12 +53,15 @@ export default function MoviePage() {
       }
     }
     fetchMovie()
-  }, [query, page]);
+  }, [search, page]);
 
   return (
     <div>
       <h2>Movie page</h2>
-      <SearchForm value={search} onChange={changeSearch} onSearch={searchMovie} />
+      <SearchForm
+        value={search}
+        onChange={changeSearch} 
+        onSearch={searchMovie} />
       {loading && <CirclesWithBar
   height="100"
   width="100"

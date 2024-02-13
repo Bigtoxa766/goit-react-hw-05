@@ -20,7 +20,7 @@ export const MovieCast = () => {
 
   return (
     <div>
-      {cast && (
+      {cast.length > 0 ? (
         <ul>
           {cast.map(item => (
             <li key={item.cast_id}>
@@ -28,9 +28,9 @@ export const MovieCast = () => {
         alt={ item.name} />
               <p>{item.name }</p>
             </li>
-          ))}
+          ) )}
         </ul>
-      )
+      ) : <p>No cast information</p>
       }
     </div>
   )

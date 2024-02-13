@@ -1,11 +1,12 @@
 import { useEffect, useState } from "react";
-import { NavLink, Outlet, useParams } from "react-router-dom";
+import { Link, NavLink, Outlet, useLocation, useParams } from "react-router-dom";
 import { fachApiById } from "../api";
 import { MovieDitails } from "../components/MovieDitails";
 
 export default function MovieDetailsPage() {
   const {movieID} = useParams();
   const [movie, setMovie] = useState([]);
+  const location = useLocation(null)
 
   useEffect(() => {
     async function fetchedMovieId() {
@@ -25,6 +26,7 @@ export default function MovieDetailsPage() {
   return (
     <div>
       <div>
+        <Link to={location.state ??  '/movie'}>Go back</Link>
       {movie &&  
       <MovieDitails 
       original_title={original_title}

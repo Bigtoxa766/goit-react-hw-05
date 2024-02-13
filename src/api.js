@@ -29,3 +29,8 @@ export const fetchApiCast = async (movieID) => {
   const response = await axios.get(`/movie/${movieID}/credits`, options)
   return (response.data)
 }
+
+export const fetchApiReviews = async (movieID) => {
+  const response = await axios.get(`/movie/${movieID}/reviews`, options)
+  return (response.data)
+}

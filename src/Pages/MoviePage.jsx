@@ -5,6 +5,7 @@ import { fachApiBySearch } from "../api"
 import { SearchForm } from "../components/SearchForm"
 import { MovieList } from "../components/MovieList";
 import { ErrorMessage } from "../components/ErrorMessage";
+import { useSearchParams } from "react-router-dom";
 
 export default function MoviePage() {
   const [movies, setMovies] = useState([]);
@@ -12,6 +13,14 @@ export default function MoviePage() {
   const [loading, setloading] = useState(false);
   const [error, setError] = useState(false);
   const [page, setPage] = useState(1)
+
+  const [params, setParams] = useSearchParams();
+  const search = params.get('search') ?? '';
+
+  const changeSearch = newSearch => {
+    params.set('search', newSearch);
+    setParams(params)
+  }
 
   const searchMovie = async (searchQuery) => {
     setQuery(searchQuery)
@@ -48,7 +57,7 @@ export default function MoviePage() {
   return (
     <div>
       <h2>Movie page</h2>
-      <SearchForm onSearch={searchMovie} />
+      <SearchForm value={search} onChange={changeSearch} onSearch={searchMovie} />
       {loading && <CirclesWithBar
   height="100"
   width="100"

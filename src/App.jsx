@@ -8,6 +8,7 @@ import { NavBar } from './components/NavBar'
 import NotFoundPage from './Pages/NotFoundPage'
 import MovieDetailsPage from './Pages/MovieDetailsPage'
 import { MovieCast } from './components/MovieCast';
+import { MovieReviews } from './components/MovieReviews';
 
 function App() {
 
@@ -22,7 +23,7 @@ function App() {
         <Route path='/movie' element={<MoviePage />} />
         <Route path='/movie/:movieID' element={<MovieDetailsPage />}>
           <Route path='cast' element={<MovieCast/>} />
-          <Route path='reviews' element={<div>reviews</div>} />
+          <Route path='reviews' element={<MovieReviews/>} />
         </Route>
         <Route path='*' element={<NotFoundPage/>} />
       </Routes>
